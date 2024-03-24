@@ -1,6 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "oop.h"
 
-void printString(char *str1, char *str2, int num) {
-    printf("country: %s, name: %s, age: %d\n", str1, str2, num);
+Class *newChild(string nameParam) {
+    Class *child = malloc(sizeof(Class));
+    child->id = strlen(nameParam);
+    child->name = nameParam;
+    child->balance = 0;
+    return child;
 }

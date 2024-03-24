@@ -1,5 +1,17 @@
 // This is oop.h header file
 
-typedef char *string;
+#ifndef OOP_H
+#define OOP_H
 
-void printString(char *, char *, int);
+typedef char *string;
+typedef struct class Class;
+
+struct class{
+    int id;
+    string name;
+    int balance;    
+};
+
+Class *newChild(string);
+
+#endif /* OOP_H */
