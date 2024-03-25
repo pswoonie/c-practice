@@ -13,20 +13,43 @@ int main(int argc, char *argv[]) {
     Class *account3 = newChild("Hoa Hoa", 15000);
     Class *account4 = newChild("Millanio", 23000);
 
-    fputs("|   ID   |   NAME   |   BALANCE   \n", stdout);
-    fputs("---------------------------------- \n", stdout);
-    printf("|    %d   | %s     |  %d   \n", account1->id, account1->name, account1->balance);
-    printf("|    %d   | %s  |  %d   \n", account2->id, account2->name, account2->balance);
-    printf("|    %d   | %s  |  %d   \n", account3->id, account3->name, account3->balance);
-    printf("|    %d   | %s |  %d   \n", account4->id, account4->name, account4->balance);
-    fputs("\n--ENTER <exit> to TERMINATE \n\n",stdout);
+    Class *accountTree[4] = {};
 
-    while(strncmp(input, "exit", 4) != 0) {
-        fflush(stdin);
-        memset(input, 0, BUFFERSIZE);
-        fgets(input,sizeof(input),stdin);
-        fputs(input, stdout);
+    for (int i=0; i<5; i++) {
+        switch(i){
+            case 0:
+                accountTree[i] = account1;
+                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
+                break;
+            case 1:
+                accountTree[i] = account2;
+                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
+                break;
+            case 2:
+                accountTree[i] = account3;
+                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
+                break;
+            case 3:
+                accountTree[i] = account4;
+                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
+                break;
+            default:
+                showAccountBalance(accountTree);
+        };
     }
+
+
+
+
+
+    // fputs("\n--ENTER <exit> to TERMINATE \n\n",stdout);
+
+    // while(strncmp(input, "exit", 4) != 0) {
+    //     fflush(stdin);
+    //     memset(input, 0, BUFFERSIZE);
+    //     fgets(input,sizeof(input),stdin);
+    //     fputs(input, stdout);
+    // }
 
     free(input);
     free(account1);
