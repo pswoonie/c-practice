@@ -7,6 +7,7 @@
 
 void reset(string mem) {
     fflush(stdin);
+    fflush(stdout);
     memset(mem, 0, BUFFERSIZE);
 }
 
@@ -15,29 +16,26 @@ int main(int argc, char *argv[]) {
     string receiver = malloc(BUFFERSIZE);
 
     Class *account1 = newChild("Andy", 5000);
-    Class *account2 = newChild("Jaquine", 2000);
+    Class *account2 = newChild("Jaquin", 2000);
     Class *account3 = newChild("Hoa Hoa", 15000);
     Class *account4 = newChild("Millanio", 23000);
 
     Class *accountTree[4] = {};
+    int arrLength = sizeof(accountTree)/sizeof(accountTree[0]);
 
     for (int i=0; i<5; i++) {
         switch(i){
             case 0:
                 accountTree[i] = account1;
-                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
                 break;
             case 1:
                 accountTree[i] = account2;
-                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
                 break;
             case 2:
                 accountTree[i] = account3;
-                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
                 break;
             case 3:
                 accountTree[i] = account4;
-                // printf("%d | %s | %d \n", accountTree[i]->id, accountTree[i]->name, accountTree[i]->balance);
                 break;
             default:
                 showAccountBalance(accountTree);
@@ -45,25 +43,33 @@ int main(int argc, char *argv[]) {
     }
 
     SPACE;
-    fputs("$ MAKE A TRANSFER $ \n", stdout);
+    fputs("$$$ MAKE A TRANSFER $$$ \n", stdout);
+    fputs("$$$ YOUR NAME IS HOA HOA $$$ \n", stdout);
     fputs("--ENTER <exit> to TERMINATE \n\n",stdout);
 
     while(strncmp(receiver, "exit", 4) != 0) {
         // ENTER AMOUNT
         reset(amount);
         fputs(">>> ENTER TRANSFER AMOUNT: ", stdout);
-        fgets(amount,sizeof(amount),stdin);
+        if(fgets(amount,BUFFERSIZE,stdin) < 0) {
+            perror("[ERROR][main.c][LINE 55]");
+            exit(EXIT_FAILURE);
+        }
 
         if (strncmp(amount, "exit", 4) == 0) break;
-        if (isNumber(amount) == 0) continue;
+        if (isNumber(amount) == 0) continue; // true: 1 , false 0
 
         // ENTER RECEIVER
         reset(receiver);
         fputs(">>> ENTER RECEIVER NAME OR ID: ", stdout);
-        fgets(receiver,sizeof(receiver),stdin);
+        if(fgets(receiver,BUFFERSIZE,stdin) < 0) {
+            perror("[ERROR][main.c][LINE 63]");
+            exit(EXIT_FAILURE);
+        }
         SPACE;
 
-        printf("%s%s\n", amount, receiver);
+        *accountTree = makeTransaction(amount, receiver, accountTree, arrLength);
+        showAccountBalance(accountTree);
     }
 
     free(amount);
