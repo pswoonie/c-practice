@@ -8,17 +8,17 @@
 int main(int argc, char *argv[]) {
     string input = malloc(BUFFERSIZE);
 
-    Class *account1 = newChild("Andy");
-    Class *account2 = newChild("Jaquine");
-    Class *account3 = newChild("Hoa Hoa");
-    Class *account4 = newChild("Millanio");
+    Class *account1 = newChild("Andy", 5000);
+    Class *account2 = newChild("Jaquine", 2000);
+    Class *account3 = newChild("Hoa Hoa", 15000);
+    Class *account4 = newChild("Millanio", 23000);
 
     fputs("|   ID   |   NAME   |   BALANCE   \n", stdout);
-    fputs("----------------------------------", stdout);
-    printf("|    %d   | %s     | %d   \n", account1->id, account1->name, account1->balance);
-    printf("|    %d   | %s  | %d   \n", account2->id, account2->name, account2->balance);
-    printf("|    %d   | %s  | %d   \n", account3->id, account3->name, account3->balance);
-    printf("|    %d   | %s | %d   \n", account4->id, account4->name, account4->balance);
+    fputs("---------------------------------- \n", stdout);
+    printf("|    %d   | %s     |  %d   \n", account1->id, account1->name, account1->balance);
+    printf("|    %d   | %s  |  %d   \n", account2->id, account2->name, account2->balance);
+    printf("|    %d   | %s  |  %d   \n", account3->id, account3->name, account3->balance);
+    printf("|    %d   | %s |  %d   \n", account4->id, account4->name, account4->balance);
     fputs("\n--ENTER <exit> to TERMINATE \n\n",stdout);
 
     while(strncmp(input, "exit", 4) != 0) {

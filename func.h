@@ -12,6 +12,6 @@ struct class{
     int balance;    
 };
 
-Class *newChild(string);
+Class *newChild(string, int);
 
 #endif /* FUNC_H */
