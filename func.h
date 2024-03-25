@@ -17,5 +17,8 @@ struct class{
 
 Class *newChild(string, int);
 void showAccountBalance(Class **);
+void makeTransaction(Class, Class);
+int getIndex(string, Class **);
+int isNumber(string); // true: 1 , false: 0
 
 #endif /* FUNC_H */

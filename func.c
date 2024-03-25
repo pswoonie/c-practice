@@ -22,3 +22,25 @@ void showAccountBalance(Class **treeParam) {
     printf("|    %d   | %s |  %d   \n", treeParam[3]->id, treeParam[3]->name, treeParam[3]->balance);
     SPACE;
 }
+
+int getIndex(string input, Class **tree) {
+
+    return 1;
+}
+
+void makeTransaction(Class a, Class b) {
+    printf("");
+}
+
+int isNumber(string str) {
+    int isTrue = 1;
+
+    for (int i=0; i<strlen(str)-1;i++) {
+        if (str[i] < '0' || str[i] > '9') {
+            isTrue = 0;
+            break;
+        }
+    }
+
+    return isTrue; // true: 1 , false: 0
+}
