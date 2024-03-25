@@ -2,20 +2,20 @@
 
 CC = clang
 CFLAGS = -g -Wall
-SRCS = hello.c oop.c
-OBJS = hello.o oop.o
-TARGET = hello
+SRCS = main.c func.c
+OBJS = main.o func.o
+TARGET = main
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-hello.o: hello.c
-	@$(CC) -c hello.c
+main.o: main.c
+	@$(CC) -c main.c
 
-oop.o: oop.c
-	@$(CC) -c oop.c
+func.o: func.c
+	@$(CC) -c func.c
 
 run:
 	@./$(TARGET)

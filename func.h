@@ -1,7 +1,7 @@
-// This is oop.h header file
+// This is func.h header file
 
-#ifndef OOP_H
-#define OOP_H
+#ifndef FUNC_H
+#define FUNC_H
 
 typedef char *string;
 typedef struct class Class;
@@ -14,4 +14,4 @@ struct class{
 
 Class *newChild(string);
 
-#endif /* OOP_H */
+#endif /* FUNC_H */
