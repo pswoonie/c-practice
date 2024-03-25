@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "oop.h"
+#include "func.h"
 
 #define BUFFERSIZE 100
 
